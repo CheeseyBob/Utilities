@@ -5,10 +5,12 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 public class ImageHandler {
 	
 	public static BufferedImage loadImage(String filename){
+		filename = FileUtils.executionPath+filename;// Append the execution path to the start of the filename to ensure we look in the correct directory.
 		return loadImage(new File(filename));
 	}
 	
@@ -18,11 +20,15 @@ public class ImageHandler {
 			im = ImageIO.read(file);
 		} catch(IOException e){
 			e.printStackTrace();
+			Object[] messages = {e, file};
+			JOptionPane.showMessageDialog(null, messages, "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return im;
 	}
 	
 	public static BufferedImage[] loadTiledImage(String filename, int xTiles, int yTiles){
+		filename = FileUtils.executionPath+filename;// Append the execution path to the start of the filename to ensure we look in the correct directory.
+		
 		// Load the image. //
 		BufferedImage im = null;
 		try {
@@ -36,7 +42,7 @@ public class ImageHandler {
 		int tileH = im.getHeight()/yTiles;
 		for(int x = 0; x < xTiles; x ++){
 			for(int y = 0; y < yTiles; y ++){
-				imList[yTiles*y + x] = im.getSubimage(x*tileW, y*tileH, tileW, tileH);
+				imList[y + yTiles*x] = im.getSubimage(x*tileW, y*tileH, tileW, tileH);
 			}
 		}
 		return imList;

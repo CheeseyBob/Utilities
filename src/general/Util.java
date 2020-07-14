@@ -92,10 +92,18 @@ public class Util {
 	
 	public static String repeatCharacter(char character, int length){
 		String str = "";
-		while(str.length() < length){
+		for(int i = 0; i < length; i ++) {
 			str += character;
 		}
 		return str;
+	}
+	
+	public static String repeatString(String str, int length){
+		String returnString = "";
+		for(int i = 0; i < length; i ++) {
+			returnString += str;
+		}
+		return returnString;
 	}
 	
 	public static <X> void shuffle(LinkedList<X> listToShuffle){
