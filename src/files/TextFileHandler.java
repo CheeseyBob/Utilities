@@ -12,8 +12,8 @@ public class TextFileHandler {
 	
 	public static Scanner startReadingFromFile(String filename){
 		Scanner scanner = null;
-		
 		try {
+			filename = FileUtils.executionPath+filename;// Append the execution path to the start of the filename to ensure we look in the correct directory.
 			File file = new File(filename);
 			scanner = new Scanner(file);
 		} catch (FileNotFoundException e) {
@@ -25,8 +25,8 @@ public class TextFileHandler {
 	
 	public static Scanner startReadingFromFile(String filename, String charsetName){
 		Scanner scanner = null;
-		
 		try {
+			filename = FileUtils.executionPath+filename;// Append the execution path to the start of the filename to ensure we look in the correct directory.
 			File file = new File(filename);
 			scanner = new Scanner(file, charsetName);
 		} catch (FileNotFoundException e) {
@@ -39,6 +39,7 @@ public class TextFileHandler {
 	public static PrintWriter startWritingToFile(String filename, boolean append){
 		PrintWriter pw = null;
 		try {
+			filename = FileUtils.executionPath+filename;// Append the execution path to the start of the filename to ensure we look in the correct directory.
 			File file = new File(filename);
 			if(file.getParentFile() != null){
 				file.getParentFile().mkdirs();
