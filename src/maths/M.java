@@ -122,6 +122,12 @@ public class M {
 		return valueList[medIndex];
 	}
 	
+	public static int median(int[] valueList){
+		Arrays.sort(valueList);
+		int medIndex = valueList.length/2;
+		return valueList[medIndex];
+	}
+	
 	public static double medianPercentile(double[] valueList, int percentile){
 		Arrays.sort(valueList);
 		int percentileIndex = (valueList.length*percentile)/100;
@@ -290,11 +296,20 @@ public class M {
 	}
 	
 	public static String toString(double value, int decimalPlaces){
+		String str = "";
 		double order = Math.pow(10, decimalPlaces);
-		value = Math.round(value*order);
-		int units = (int)(value/order);
-		int decimal = (int)(value%order);
-		return units+"."+decimal;
+		long n = Math.round(value*order);
+		
+		// Add each digit to the string in reverse order. //
+		for(int i = 0; i < decimalPlaces; i ++) {
+			int digit = (int)(n % 10);
+			str = digit+str;
+			n = (n - digit)/10;
+		}
+		
+		// Add the units. //
+		str = n+"."+str;
+		return str;
 	}
 	
 	/**
