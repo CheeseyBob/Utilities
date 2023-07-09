@@ -1,8 +1,7 @@
 package general;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.Toolkit;
+import java.awt.*;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 import javax.swing.JFrame;
@@ -19,6 +18,13 @@ public class Util {
 	@SuppressWarnings("unchecked")
 	public static <X> LinkedList<X> cloneList(LinkedList<X> list){
 		return (LinkedList<X>)list.clone();
+	}
+
+	public static Polygon clonePolygon(Polygon polygon) {
+		int nPoints = polygon.npoints;
+		int[] xPoints = Arrays.copyOf(polygon.xpoints, polygon.xpoints.length);
+		int[] yPoints = Arrays.copyOf(polygon.ypoints, polygon.ypoints.length);
+		return new Polygon(xPoints, yPoints,nPoints);
 	}
 	
 	/**
