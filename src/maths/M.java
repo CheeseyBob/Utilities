@@ -13,14 +13,6 @@ public class M {
 	public static final double degrees45 = Math.toRadians(45);
 	public static final double degrees60 = Math.toRadians(60);
 	
-	public static int loopUp1(int value, int modulus){
-		return (value + 1)%modulus;
-	}
-	
-	public static int loopDown1(int value, int modulus){
-		return (value + modulus - 1)%modulus;
-	}
-	
 	public static double angularDistance(double angle1, double angle2){
 		double a1, a2;
 		if(angle1 < angle2){
@@ -84,6 +76,32 @@ public class M {
 		angle2 -= angle1;
 		angle2 = wrapAngle(angle2);
 		return (angle2 < Math.PI);
+	}
+
+	public static int loopDown1(int value, int modulus){
+		return (value + modulus - 1)%modulus;
+	}
+
+	public static int loopUp1(int value, int modulus){
+		return (value + 1)%modulus;
+	}
+
+	public static double max(double... valueList){
+		double max = valueList[0];
+
+		for(int i = 1; i < valueList.length; i ++)
+			max = Math.max(max, valueList[i]);
+
+		return max;
+	}
+
+	public static int max(int... valueList){
+		int max = valueList[0];
+
+		for(int i = 1; i < valueList.length; i ++)
+			max = Math.max(max, valueList[i]);
+
+		return max;
 	}
 	
 	public static double mean(double... valueList){
