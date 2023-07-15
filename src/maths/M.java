@@ -86,7 +86,7 @@ public class M {
 		return (angle2 < Math.PI);
 	}
 	
-	public static double mean(double[] valueList){
+	public static double mean(double... valueList){
 		float total = 0;
 		for(double value : valueList){
 			total += value;
@@ -94,7 +94,7 @@ public class M {
 		return total/valueList.length;
 	}
 	
-	public static int mean(int[] valueList){
+	public static int mean(int... valueList){
 		int total = 0;
 		for(int value : valueList){
 			total += value;
@@ -102,7 +102,7 @@ public class M {
 		return total/valueList.length;
 	}
 	
-	public static float mean(float[] valueList){
+	public static float mean(float... valueList){
 		float total = 0;
 		for(float value : valueList){
 			total += value;
@@ -110,19 +110,19 @@ public class M {
 		return total/valueList.length;
 	}
 	
-	public static double median(double[] valueList){
+	public static double median(double... valueList){
 		Arrays.sort(valueList);
 		int medIndex = valueList.length/2;
 		return valueList[medIndex];
 	}
 	
-	public static float median(float[] valueList){
+	public static float median(float... valueList){
 		Arrays.sort(valueList);
 		int medIndex = valueList.length/2;
 		return valueList[medIndex];
 	}
 	
-	public static int median(int[] valueList){
+	public static int median(int... valueList){
 		Arrays.sort(valueList);
 		int medIndex = valueList.length/2;
 		return valueList[medIndex];
