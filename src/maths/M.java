@@ -1,6 +1,6 @@
 package maths;
 
-import java.awt.Point;
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -23,6 +23,30 @@ public class M {
 			a2 = angle1;
 		}
 		return Math.min(Math.abs(a2 - a1), Math.abs(a1 + Math.PI*2 - a2));
+	}
+
+	/**
+	 * @author ChatGPT
+	 */
+	public static double area(Polygon polygon) {
+		// Uses the "shoelace formula".
+
+		int n = polygon.npoints;
+		int[] x = polygon.xpoints;
+		int[] y = polygon.ypoints;
+
+		double sum1 = 0;
+		double sum2 = 0;
+
+		for (int i = 0; i < n - 1; i++) {
+			sum1 += x[i] * y[i + 1];
+			sum2 += y[i] * x[i + 1];
+		}
+
+		sum1 += x[n - 1] * y[0];
+		sum2 += y[n - 1] * x[0];
+
+		return Math.abs(sum1 - sum2) / 2.0;
 	}
 	
 	public static int constrainValue(int min, int value, int max){
